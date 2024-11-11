@@ -17,6 +17,7 @@ body {
 /* Wrapper */
 .wrapper {
   width: 95%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -25,10 +26,12 @@ body {
   margin: 1em 0;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #search-container input {
-  width: 40%;
+  flex: 1;
+  min-width: 60%;
   border-bottom: 2px solid #110f29;
   padding: 1em 0.3em;
   background-color: transparent;
@@ -45,6 +48,7 @@ body {
   color: #ffffff;
   border-radius: 5px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 /* Button Styling */
@@ -55,6 +59,7 @@ body {
   background-color: transparent;
   color: #6759ff;
   cursor: pointer;
+  margin: 0.5em 0;
 }
 
 .active {
@@ -103,7 +108,7 @@ img {
 
 /* Header */
 .header {
-  height: 70px;
+  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -122,6 +127,7 @@ img {
 
 .header .nav {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .header .nav li {
@@ -174,14 +180,21 @@ img {
 /* Mobile Screens (max-width: 480px) */
 @media screen and (max-width: 480px) {
   /* Adjust Search Input */
+  #search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   #search-container input {
-    width: 80%;
+    width: 100%;
     padding: 0.8em;
+    margin-bottom: 0.5em;
   }
 
   #search-container button {
     padding: 0.8em 1.5em;
     font-size: 0.9em;
+    width: 100%;
   }
 
   /* Adjust the Books grid to a single column */
@@ -205,6 +218,11 @@ img {
     margin-top: 0.5em;
   }
 
+  .header .nav li {
+    margin-left: 0;
+    margin-top: 0.5em;
+  }
+
   .footer .row ul li {
     display: block;
     margin: 10px 0;
@@ -214,5 +232,21 @@ img {
   .button-value {
     padding: 0.7em 1.5em;
     font-size: 0.9em;
+    width: 100%;
+  }
+}
+
+/* Large Screens (min-width: 1200px) */
+@media screen and (min-width: 1200px) {
+  .header .title {
+    font-size: 2em;
+  }
+
+  #Books {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .wrapper {
+    width: 80%;
   }
 }
